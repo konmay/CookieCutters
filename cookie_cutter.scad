@@ -55,3 +55,12 @@ module cookie_cutter_join(file, height, edge_height, wall_thickness) {
       dxf(file, "join", 1.5);
    }
 }
+
+module cookie_cutter_join_stamp(file, height, stamp_height, edge_height, wall_thickness, stamp_thickness) {
+   mirror([1, 0, 0]) union () {
+      cutter(file, "cutter", height, edge_height, wall_thickness);
+      wall(file, "outer", 1.5, 6);
+      cutter(file, "stamp", inner, 0, stamp_thickness);
+      dxf(file, "join", 1.5);
+   }
+}
